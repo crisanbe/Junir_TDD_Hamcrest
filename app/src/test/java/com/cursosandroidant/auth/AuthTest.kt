@@ -12,9 +12,25 @@ class AuthTest {
     }
 
     @Test
-    //nombramiento de funciones Evento/Accion/devolovion o que deberia pasar
     fun login_complete_returnsFalse(){
         val isAutenticated = userAuthentication("an@gmail.com", "1234")
+        Assert.assertFalse(isAutenticated)
+    }
+
+    @Test
+    fun login_emtyEmail_returnsFalse(){
+        val isAutenticated = userAuthentication("", "1234")
+        Assert.assertFalse(isAutenticated)
+    }
+
+    @Test
+    fun login_NullEmail_returnsFalse(){
+        val isAutenticated = userAuthenticationTDD(null, "1234")
+        Assert.assertFalse(isAutenticated)
+    }
+    @Test
+    fun login_NullPassword_returnsFalse(){
+        val isAutenticated = userAuthenticationTDD("ant@gmail.com", null)
         Assert.assertFalse(isAutenticated)
     }
 }
