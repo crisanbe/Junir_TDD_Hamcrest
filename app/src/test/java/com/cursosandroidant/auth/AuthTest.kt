@@ -5,7 +5,7 @@ import org.junit.Test
 
 class AuthTest {
     @Test
-    //nombramiento de funciones Evento/Accion/devolovion o que deberia pasar
+    //nombramiento de funciones Evento/Accion/devolovión o que deberia pasar
     fun login_complete_returnsTrue(){
         val isAutenticated = userAuthentication("ant@gmail.com", "1234")
         Assert.assertTrue(isAutenticated)
