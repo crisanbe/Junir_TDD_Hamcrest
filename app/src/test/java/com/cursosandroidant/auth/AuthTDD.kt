@@ -11,16 +11,33 @@ class AuthTDD {
         Assert.assertEquals(AuthEvent.USER_EXIST, isAuthencated)
     }
 
- /*   login_completeForm_notExistUser_returnsFailEvent
-    login_emptyEmail_returnsFailEvent
-    login_emptyPassword_returnsFailEvent
-    login_emptyForm_returnsFailEvent
-    login_completeForm_invalidEmail_returnsFailEvent
-    login_completeForm_invalidPassword_returnsFailEvent
-    login_completeForm_invalidUser_returnsFailEvent
-    login_nullEmail_returnsException
-    login_nullPassword_returnsException
-    login_nullForm_returnsException
-    login_completeForm_errorLengthPassword_returnsFailEvent*/
+    @Test
+  fun  login_completeForm_notExistUser_returnsFailEvent(){
+     val isAuthencated = userAuthenticationTDD("nt@gmail.com", "1234")
+        Assert.assertEquals(AuthEvent.NOT_USER_EXIST, isAuthencated)
+    }
+
+    @Test
+    fun  login_emptyEmail_returnsFailEvent(){
+        val isAuthencated = userAuthenticationTDD("", "1234")
+        Assert.assertEquals(AuthEvent.EMTY_EMAIL, isAuthencated)
+    }
+
+    @Test
+    fun  login_emptyPassword_returnsFailEvent(){
+        val isAuthencated = userAuthenticationTDD("ant@gmail.com", "")
+        Assert.assertEquals(AuthEvent.EMTY_PASSWORD, isAuthencated)
+    }
+
+
+    /*
+       login_emptyForm_returnsFailEvent
+       login_completeForm_invalidEmail_returnsFailEvent
+       login_completeForm_invalidPassword_returnsFailEvent
+       login_completeForm_invalidUser_returnsFailEvent
+       login_nullEmail_returnsException
+       login_nullPassword_returnsException
+       login_nullForm_returnsException
+       login_completeForm_errorLengthPassword_returnsFailEvent*/
 
 }

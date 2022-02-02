@@ -4,5 +4,7 @@ enum class AuthEvent {
     //Success
     USER_EXIST,
     //fail
-    NOT_USER_EXIST
+    NOT_USER_EXIST,
+    EMTY_EMAIL,
+    EMTY_PASSWORD
 }

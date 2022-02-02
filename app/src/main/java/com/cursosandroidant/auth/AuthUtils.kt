@@ -10,6 +10,9 @@ fun userAuthentication(email: String, password: String): Boolean {
 }
 
 fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
+    if (email!!.isEmpty()) return AuthEvent.EMTY_EMAIL
+    if (password!!.isEmpty()) return AuthEvent.EMTY_PASSWORD
+
     if (email == "ant@gmail.com" && password == "1234"){
         return AuthEvent.USER_EXIST
     }
