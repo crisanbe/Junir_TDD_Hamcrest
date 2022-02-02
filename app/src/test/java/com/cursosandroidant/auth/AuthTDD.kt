@@ -54,10 +54,15 @@ class AuthTDD {
         Assert.assertEquals(AuthEvent.INVALID_PASSWORD, isAuthencated)
     }
 
+    //campos  invalidos
+    @Test
+    fun  login_completeForm_invalidUser_returnsFailEvent(){
+        val isAuthencated = userAuthenticationTDD("ant@gmailcom", "123e")
+        Assert.assertEquals(AuthEvent.INVALID_USER, isAuthencated)
+    }
+
 
     /*
-
-       login_completeForm_invalidUser_returnsFailEvent
        login_nullEmail_returnsException
        login_nullPassword_returnsException
        login_nullForm_returnsException
