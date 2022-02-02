@@ -29,9 +29,15 @@ class AuthTDD {
         Assert.assertEquals(AuthEvent.EMTY_PASSWORD, isAuthencated)
     }
 
+    @Test
+    fun  login_emptyForm_returnsFailEvent(){
+        val isAuthencated = userAuthenticationTDD("", "")
+        Assert.assertEquals(AuthEvent.EMTY_FORM, isAuthencated)
+    }
+
 
     /*
-       login_emptyForm_returnsFailEvent
+
        login_completeForm_invalidEmail_returnsFailEvent
        login_completeForm_invalidPassword_returnsFailEvent
        login_completeForm_invalidUser_returnsFailEvent

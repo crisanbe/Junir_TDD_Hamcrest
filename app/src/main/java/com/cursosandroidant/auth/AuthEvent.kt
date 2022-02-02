@@ -6,5 +6,6 @@ enum class AuthEvent {
     //fail
     NOT_USER_EXIST,
     EMTY_EMAIL,
-    EMTY_PASSWORD
+    EMTY_PASSWORD,
+    EMTY_FORM
 }
