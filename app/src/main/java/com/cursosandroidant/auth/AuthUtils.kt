@@ -9,11 +9,11 @@ fun userAuthentication(email: String, password: String): Boolean {
     return false
 }
 
-fun userAuthenticationTDD(email: String?, password: String?): Boolean {
+fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
     if (email == "ant@gmail.com" && password == "1234"){
-        return true
+        return AuthEvent.USER_EXIST
     }
-    return false
+    return AuthEvent.NOT_USER_EXIST
 }
 
 fun isEmailValid(email: String): Boolean {

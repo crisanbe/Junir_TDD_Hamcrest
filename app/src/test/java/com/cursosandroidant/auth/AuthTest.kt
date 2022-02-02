@@ -22,7 +22,7 @@ class AuthTest {
         val isAutenticated = userAuthentication("", "1234")
         Assert.assertFalse(isAutenticated)
     }
-
+/*--> TDD
     @Test
     fun login_NullEmail_returnsFalse(){
         val isAutenticated = userAuthenticationTDD(null, "1234")
@@ -32,5 +32,5 @@ class AuthTest {
     fun login_NullPassword_returnsFalse(){
         val isAutenticated = userAuthenticationTDD("ant@gmail.com", null)
         Assert.assertFalse(isAutenticated)
-    }
+    }*/
 }
