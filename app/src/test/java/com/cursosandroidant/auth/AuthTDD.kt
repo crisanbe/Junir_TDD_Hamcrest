@@ -69,10 +69,19 @@ class AuthTDD {
         Assert.assertEquals(AuthEvent.NULL_EMAIL, isAuthencated)
     }
 
+    //campos password null (AssertThrows)
+    @Test()
+    fun  login_nullPassword_returnsException(){
+        Assert.assertThrows(AuthExeption::class.java){
+            print(userAuthenticationTDD("ant@gmail.com", null))
+        }
+
+    }
+
 
     /*
 
-       login_nullPassword_returnsException
+
        login_nullForm_returnsException
        login_completeForm_errorLengthPassword_returnsFailEvent*/
 
