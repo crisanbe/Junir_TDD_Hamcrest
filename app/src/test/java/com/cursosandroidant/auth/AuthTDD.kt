@@ -91,8 +91,13 @@ class AuthTDD {
         }
     }
 
+    //ERROR DE LONGITUD DE CARACTERES, MAXIMO 4 (PASSWORD)
+    @Test
+    fun  login_completeForm_errorLengthPassword_returnsFailEvent(){
+        val lenghPassword = userAuthenticationTDD("ant@gmail.com", "123")
+        Assert.assertEquals(AuthEvent.LENGTH_PASSWORD, lenghPassword)
+    }
 
-    /*
-       login_completeForm_errorLengthPassword_returnsFailEvent*/
+
 
 }

@@ -1,5 +1,7 @@
 package com.cursosandroidant.auth
 
+import androidx.core.text.trimmedLength
+
 
 fun userAuthentication(email: String, password: String): Boolean {
     if (email == "ant@gmail.com" && password == "1234") {
@@ -9,31 +11,39 @@ fun userAuthentication(email: String, password: String): Boolean {
 }
 
 fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
-    if (email == null && password == null) throw AuthExeption(AuthEvent.NULL_FORM,"")
-    if (email == null) throw AuthExeption(AuthEvent.NULL_EMAIL,"")
-    if (password == null) throw AuthExeption(AuthEvent.NULL_PASSWORD,"")
+    if (email == null && password == null) throw AuthExeption(AuthEvent.NULL_FORM, "")
+    if (email == null) throw AuthExeption(AuthEvent.NULL_EMAIL, "")
+    if (password == null) throw AuthExeption(AuthEvent.NULL_PASSWORD, "")
 
     if (email.isEmpty() && password.isEmpty()) return AuthEvent.EMTY_FORM
     if (email.isEmpty()) return AuthEvent.EMTY_EMAIL
     if (password.isEmpty()) return AuthEvent.EMTY_PASSWORD
 
-    val paswordNumeric = password.toIntOrNull()//CONVERTIR STRING EN UN NUMERO
+    if (password.length != 4) return AuthEvent.LENGTH_PASSWORD
+    else{
+        val paswordNumeric = password.toIntOrNull()//CONVERTIR STRING EN UN NUMERO
 
-    return if (!isEmailValid(email) && paswordNumeric == null) AuthEvent.INVALID_USER
-    else if (!isEmailValid(email)) AuthEvent.INVALID_EMAIL
-    else if (paswordNumeric == null) AuthEvent.INVALID_PASSWORD
-    else {
+        return if (!isEmailValid(email) && paswordNumeric == null) AuthEvent.INVALID_USER
+        else if (!isEmailValid(email)) AuthEvent.INVALID_EMAIL
+        else if (paswordNumeric == null) AuthEvent.INVALID_PASSWORD
+        else {
 
-        return if (email == "ant@gmail.com" && password == "1234")
-            AuthEvent.USER_EXIST
-        else
-            AuthEvent.NOT_USER_EXIST
+            return if (email == "ant@gmail.com" && password == "1234")
+                AuthEvent.USER_EXIST
+            else
+                AuthEvent.NOT_USER_EXIST
+        }
+
     }
-
 
 }
 
 fun isEmailValid(email: String): Boolean {
     val EMAIL_REGEX = "^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})"
     return EMAIL_REGEX.toRegex().matches(email);
+}
+
+fun isPasswordValid(password: String): Boolean {
+    val PASSWORD_REGEX = "(.{4,})"
+    return PASSWORD_REGEX.toRegex().matches(password);
 }
