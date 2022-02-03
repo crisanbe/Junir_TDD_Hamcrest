@@ -9,6 +9,7 @@ fun userAuthentication(email: String, password: String): Boolean {
 }
 
 fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
+    if (email == null && password == null) throw AuthExeption(AuthEvent.NULL_FORM,"")
     if (email == null) throw AuthExeption(AuthEvent.NULL_EMAIL,"")
     if (password == null) throw AuthExeption(AuthEvent.NULL_PASSWORD,"")
 

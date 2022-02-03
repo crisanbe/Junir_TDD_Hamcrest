@@ -78,11 +78,21 @@ class AuthTDD {
 
     }
 
+    //campos correo y password estan null ()
+    @Test()
+    fun  login_nullForm_returnsException(){
+        try {
+            val result = userAuthenticationTDD(null, null)
+            Assert.assertEquals(AuthEvent.NULL_FORM, result)
+        } catch (e: Exception) {
+            (e as? AuthExeption)?.let{
+                Assert.assertEquals(AuthEvent.NULL_FORM, it.authEvent)
+            }
+        }
+    }
+
 
     /*
-
-
-       login_nullForm_returnsException
        login_completeForm_errorLengthPassword_returnsFailEvent*/
 
 }
