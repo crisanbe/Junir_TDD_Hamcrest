@@ -1,19 +1,21 @@
 package com.cursosandroidant.auth
 
+
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.*//importar `is` de hamcrest
 import org.junit.Assert
 import org.junit.Ignore
 import org.junit.Test
 
 class AuthHamcrestTest {
-    //todo (sujecto a aprobar) - (Accion o estado actual de la prueba) - (resultado que esteramos del Test)
+    //todo (sujeto a aprobar) - (Accion o estado actual de la prueba) - (resultado que esteramos del Test)
     //GIVEN-WHEN-THEN
     //todo (dado)-(cuándo)-(entonces)
 
-    //correo y contraseña correctos
     @Test
     fun  loginUser_correctData_returnsSuccessEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmail.com", "1234")
-        Assert.assertEquals(AuthEvent.USER_EXIST, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmail.com", "1234")
+        assertThat(AuthEvent.USER_EXIST, `is`(result) )
     }
 
     //correo electronico no existe
