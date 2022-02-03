@@ -10,64 +10,64 @@ class AuthTDDTest {
     //correo y contraseña correctos
     @Test
   fun  login_completeFrom_existUser_returnsSuccessEvent(){
-     val isAuthencated = userAuthenticationTDD("ant@gmail.com", "1234")
-        Assert.assertEquals(AuthEvent.USER_EXIST, isAuthencated)
+     val result = userAuthenticationTDD("ant@gmail.com", "1234")
+        Assert.assertEquals(AuthEvent.USER_EXIST, result)
     }
 
     //correo electronico no existe
     @Test
   fun  login_completeForm_notExistUser_returnsFailEvent(){
-     val isAuthencated = userAuthenticationTDD("nt@gmail.com", "1234")
-        Assert.assertEquals(AuthEvent.NOT_USER_EXIST, isAuthencated)
+     val result = userAuthenticationTDD("nt@gmail.com", "1234")
+        Assert.assertEquals(AuthEvent.NOT_USER_EXIST, result)
     }
 
     //campo correo vacio
     @Test
     fun  login_emptyEmail_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("", "1234")
-        Assert.assertEquals(AuthEvent.EMTY_EMAIL, isAuthencated)
+        val result = userAuthenticationTDD("", "1234")
+        Assert.assertEquals(AuthEvent.EMTY_EMAIL, result)
     }
 
     //campo password vacio
     @Test
     fun  login_emptyPassword_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmail.com", "")
-        Assert.assertEquals(AuthEvent.EMTY_PASSWORD, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmail.com", "")
+        Assert.assertEquals(AuthEvent.EMTY_PASSWORD, result)
     }
 
     //campos vacios
     @Test
     fun  login_emptyForm_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("", "")
-        Assert.assertEquals(AuthEvent.EMTY_FORM, isAuthencated)
+        val result = userAuthenticationTDD("", "")
+        Assert.assertEquals(AuthEvent.EMTY_FORM, result)
     }
 
     //Correo electronico no valido, formato incorrecto
     @Test
     fun  login_completeForm_invalidEmail_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmailcom", "1234")
-        Assert.assertEquals(AuthEvent.INVALID_EMAIL, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmailcom", "1234")
+        Assert.assertEquals(AuthEvent.INVALID_EMAIL, result)
     }
 
     //campo contraseña , formato incorrecto
     @Test
     fun  login_completeForm_invalidPassword_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmail.com", "123e")
-        Assert.assertEquals(AuthEvent.INVALID_PASSWORD, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmail.com", "123e")
+        Assert.assertEquals(AuthEvent.INVALID_PASSWORD, result)
     }
 
     //campos  invalidos
     @Test
     fun  login_completeForm_invalidUser_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmailcom", "123e")
-        Assert.assertEquals(AuthEvent.INVALID_USER, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmailcom", "123e")
+        Assert.assertEquals(AuthEvent.INVALID_USER, result)
     }
 
     //campos correo electronico null
     @Test(expected = AuthExeption::class)
     fun  login_nullEmail_returnsException(){
-        val isAuthencated = userAuthenticationTDD(null, "123e")
-        Assert.assertEquals(AuthEvent.NULL_EMAIL, isAuthencated)
+        val result = userAuthenticationTDD(null, "123e")
+        Assert.assertEquals(AuthEvent.NULL_EMAIL, result)
     }
 
     //campos password null (AssertThrows)

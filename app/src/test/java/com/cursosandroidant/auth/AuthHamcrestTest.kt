@@ -21,57 +21,57 @@ class AuthHamcrestTest {
     //correo electronico no existe
     @Test
     fun  loginUser_wrongData_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("nt@gmail.com", "1234")
-        Assert.assertEquals(AuthEvent.NOT_USER_EXIST, isAuthencated)
+        val result = userAuthenticationTDD("nt@gmail.com", "1234")
+        assertThat(AuthEvent.NOT_USER_EXIST, `is`(result))
     }
 
     //campo correo vacio
     @Test
     fun  loginUser_emptyEmail_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("", "1234")
-        Assert.assertEquals(AuthEvent.EMTY_EMAIL, isAuthencated)
+        val result = userAuthenticationTDD("", "1234")
+        assertThat(AuthEvent.EMTY_EMAIL, `is`(result))
     }
 
     //campo password vacio
     @Test
     fun  loginUser_emptyPassword_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmail.com", "")
-        Assert.assertEquals(AuthEvent.EMTY_PASSWORD, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmail.com", "")
+        assertThat(AuthEvent.EMTY_PASSWORD, `is`(result))
     }
 
     //campos vacios
     @Test
     fun  loginUser_emptysFields_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("", "")
-        Assert.assertEquals(AuthEvent.EMTY_FORM, isAuthencated)
+        val result = userAuthenticationTDD("", "")
+        assertThat(AuthEvent.EMTY_FORM, `is`(result))
     }
 
     //Correo electronico no valido, formato incorrecto
     @Test
     fun  loginUser_invalidEmailFormat_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmailcom", "1234")
-        Assert.assertEquals(AuthEvent.INVALID_EMAIL, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmailcom", "1234")
+        assertThat(AuthEvent.INVALID_EMAIL, `is`(result))
     }
 
     //campo contraseña , formato incorrecto
     @Test
     fun  loginUser_invalidPasswordFormat_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmail.com", "123e")
-        Assert.assertEquals(AuthEvent.INVALID_PASSWORD, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmail.com", "123e")
+        assertThat(AuthEvent.INVALID_PASSWORD, `is`(result))
     }
 
     //campos  invalidos
     @Test
     fun  loginUser_invalidUserFormat_returnsFailEvent(){
-        val isAuthencated = userAuthenticationTDD("ant@gmailcom", "123e")
-        Assert.assertEquals(AuthEvent.INVALID_USER, isAuthencated)
+        val result = userAuthenticationTDD("ant@gmailcom", "123e")
+        assertThat(AuthEvent.INVALID_USER, `is`(result))
     }
 
     //campos correo electronico null
     @Test(expected = AuthExeption::class)
     fun  loginUser_nullEmailField_returnsException(){
-        val isAuthencated = userAuthenticationTDD(null, "123e")
-        Assert.assertEquals(AuthEvent.NULL_EMAIL, isAuthencated)
+        val result = userAuthenticationTDD(null, "123e")
+        assertThat(AuthEvent.NULL_EMAIL, `is`(result))
     }
 
     //campos password null (AssertThrows)
@@ -88,10 +88,10 @@ class AuthHamcrestTest {
     fun  loginUser_nullFields_returnsException(){
         try {
             val result = userAuthenticationTDD(null, null)
-            Assert.assertEquals(AuthEvent.NULL_FORM, result)
+            assertThat(AuthEvent.NULL_FORM, `is`(result))
         } catch (e: Exception) {
             (e as? AuthExeption)?.let{
-                Assert.assertEquals(AuthEvent.NULL_FORM, it.authEvent)
+                assertThat(AuthEvent.NULL_FORM, `is`(it.authEvent))
             }
         }
     }
@@ -100,7 +100,7 @@ class AuthHamcrestTest {
     @Test
     fun  loginUser_errorLengthPassword_returnsFailEvent(){
         val lenghPassword = userAuthenticationTDD("ant@gmail.com", "123")
-        Assert.assertEquals(AuthEvent.LENGTH_PASSWORD, lenghPassword)
+        assertThat(AuthEvent.LENGTH_PASSWORD,`is`(lenghPassword))
     }
 
 }
