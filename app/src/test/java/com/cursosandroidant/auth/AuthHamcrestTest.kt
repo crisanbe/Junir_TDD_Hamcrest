@@ -117,4 +117,27 @@ class AuthHamcrestTest {
         assertThat(email, not(`is`(password)))
     }
 
+    //todo hasItemInArray
+    @Test
+    fun checkExist_mewEmail_returnsString(){
+        val oldEmail = "ant@gmail.com"
+        val newEmail = "ant@ANDROID.com"
+        val emails = arrayOf(oldEmail,newEmail)
+        assertThat(emails, hasItemInArray(newEmail))
+    //Nos dice que contiene los correos incluidos en el array
+        //si cambiamo el correo por otro nos saldra error gracias a hasItemInArray
+        //ejemplo assertThat(emails, hasItemInArray("newEmail"))
+    }
+
+    //todo everyItem(endsWith
+    @Test
+    fun checkDimain_arrayEmails_retursString(){
+        val nextEmail = "crisanbe@cursosandroid.com"
+        val oldEmail = "ant@gmail.com"
+        val newEmail = "ant@cursosandroid.com"
+        val emails = arrayListOf(oldEmail,newEmail,nextEmail)//No coinside dominio ANDROID.com
+        val newEmails = arrayListOf(newEmail,nextEmail)//coinside los dominios cursosandroid.com
+        assertThat(newEmails, everyItem(endsWith("cursosandroid.com")))
+    }
+
 }
