@@ -5,7 +5,7 @@ import org.junit.Ignore
 import org.junit.Test
 import java.lang.NullPointerException
 
-class AuthTDD {
+class AuthTDDTest {
 
     //correo y contraseña correctos
     @Test
