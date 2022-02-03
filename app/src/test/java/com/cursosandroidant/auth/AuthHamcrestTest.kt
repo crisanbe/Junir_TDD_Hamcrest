@@ -103,4 +103,18 @@ class AuthHamcrestTest {
         assertThat(AuthEvent.LENGTH_PASSWORD,`is`(lenghPassword))
     }
 
+    //todo (both(Hamcrest))--con nos dice si contiene o no la letra en la palabra actual
+    @Test
+    fun checkNames_differentUsers_match(){
+        assertThat("Maria", both(containsString("a")).and(containsString("i")))
+    }
+
+    //todo (not(Hamcrest))--En esta funcion le decimos que el correo no es igual a la contraseña
+    @Test
+    fun checkData_emailPassword_noMatch(){
+        val email = "ant@gmail.com"
+        val password = "1234"
+        assertThat(email, not(`is`(password)))
+    }
+
 }
