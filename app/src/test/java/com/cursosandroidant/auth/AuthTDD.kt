@@ -1,6 +1,7 @@
 package com.cursosandroidant.auth
 
 import org.junit.Assert
+import org.junit.Ignore
 import org.junit.Test
 import java.lang.NullPointerException
 
@@ -92,6 +93,7 @@ class AuthTDD {
     }
 
     //ERROR DE LONGITUD DE CARACTERES, MAXIMO 4 (PASSWORD)
+    @Ignore("FALTA DEFINIR UN REQUISITO DEL CLIENTE...")//ANOTACION TEMPORAL HASTA QUE SE REFACTORICE LAS DEFINICIONES POR EL CLIENTE.
     @Test
     fun  login_completeForm_errorLengthPassword_returnsFailEvent(){
         val lenghPassword = userAuthenticationTDD("ant@gmail.com", "123")
