@@ -9,7 +9,9 @@ fun userAuthentication(email: String, password: String): Boolean {
 }
 
 fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
-    if (email!!.isEmpty() && password!!.isEmpty()) return AuthEvent.EMTY_FORM
+    if (email == null) throw AuthExeption(AuthEvent.NULL_EMAIL,"")
+
+    if (email.isEmpty() && password!!.isEmpty()) return AuthEvent.EMTY_FORM
     if (email.isEmpty()) return AuthEvent.EMTY_EMAIL
     if (password!!.isEmpty()) return AuthEvent.EMTY_PASSWORD
 

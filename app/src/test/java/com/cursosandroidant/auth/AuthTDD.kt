@@ -63,7 +63,7 @@ class AuthTDD {
     }
 
     //campos correo electronico null
-    @Test(expected = NullPointerException::class)
+    @Test(expected = AuthExeption::class)
     fun  login_nullEmail_returnsException(){
         val isAuthencated = userAuthenticationTDD(null, "123e")
         Assert.assertEquals(AuthEvent.NULL_EMAIL, isAuthencated)
