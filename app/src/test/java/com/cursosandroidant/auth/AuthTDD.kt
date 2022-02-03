@@ -2,6 +2,7 @@ package com.cursosandroidant.auth
 
 import org.junit.Assert
 import org.junit.Test
+import java.lang.NullPointerException
 
 class AuthTDD {
 
@@ -61,9 +62,16 @@ class AuthTDD {
         Assert.assertEquals(AuthEvent.INVALID_USER, isAuthencated)
     }
 
+    //campos correo electronico null
+    @Test(expected = NullPointerException::class)
+    fun  login_nullEmail_returnsException(){
+        val isAuthencated = userAuthenticationTDD(null, "123e")
+        Assert.assertEquals(AuthEvent.NULL_EMAIL, isAuthencated)
+    }
+
 
     /*
-       login_nullEmail_returnsException
+
        login_nullPassword_returnsException
        login_nullForm_returnsException
        login_completeForm_errorLengthPassword_returnsFailEvent*/
